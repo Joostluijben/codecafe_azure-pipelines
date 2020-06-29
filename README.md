@@ -25,6 +25,7 @@ Clone this repository
 #### Next create your azure container registry
 - Go to https://portal.azure.com
 - Create a container registry
+- Give it admin rights in the permission tab
 
 #### Connect your container registry with your DevOps project
 - Go to your project in azure DevOps
@@ -58,5 +59,19 @@ By default, the azure webapp listens to port 80. Spring boot defaults to port 80
 - Go to your webapp
 - Configuration
 - Add a new Application setting with key WEBSITES_PORT and value 8080
-- Your webapp should work now with your docker container! Go to overview and click on browse to see it
+- Your webapp should work now with your docker container! Go to overview and click on browse to see it.
 
+### Adding environments
+Now you've created your first pipeline, it's time to add environments. With this you can have a staging environment and a production environment. You can deploy to the production environment with a manual gate.
+- Look at the azure-pipelines file in this branch. 
+- If you run this it will create a new image on the existing repository with a normal image and a production image
+- Run the pipeline
+- Go to the environments tab in azure pipelines tab. You'll see a production environment
+- Click on production
+- Click on the three dots
+- Approvals and checks
+- Plus sign
+- Approvals. Click who can approve and confirm.
+- Create a production webapp on the azure portal like explained in  Connect your docker container with your webapp. Connect it to your docker image.
+- Run the pipeline
+- Now you will have a manual gate on your production environment
